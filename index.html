@@ -36,6 +36,7 @@
         name="inputField"
       />
     </div>
+    <div id="errorMessage"></div>
     <div class="downloadbtn">
       <button
         class="btndm"
@@ -67,7 +68,7 @@
         </ul>
       </div>
     </div>
-    <script>
+    <!-- <script>
       document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("redirectButton").addEventListener("click");
   });
@@ -82,6 +83,26 @@
   function redirect() {
     window.location.href = "secondpage.html";
   }
-    </script>
+    </script> -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          document.getElementById("redirectButton").addEventListener("click", validateInput);
+      });
+
+      function validateInput() {
+          let input = document.getElementById("inputField").value.trim();
+          let errorMessageElement = document.getElementById("errorMessage");
+          if (input === "") {
+              errorMessageElement.textContent = "Please Enter your Phone Number to proceed.";
+          } else {
+              errorMessageElement.textContent = ""; // Clear any previous error message
+              redirect();
+          }
+      }
+
+      function redirect() {
+          window.location.href = "secondpage.html";
+      }
+  </script>
   </body>
 </html>
